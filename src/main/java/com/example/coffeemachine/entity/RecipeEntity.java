@@ -4,7 +4,9 @@ import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.springframework.cache.annotation.Cacheable;
 
+import java.io.Serializable;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -13,7 +15,8 @@ import java.util.Map;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class RecipeEntity {
+@Cacheable(value = "recipe")
+public class RecipeEntity implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -23,10 +26,10 @@ public class RecipeEntity {
     @Column(name = "name")
     private String name;
 
-    @ElementCollection
+//    @JsonIgnore
+    @ElementCollection(fetch = FetchType.EAGER)
     @CollectionTable(name = "recipe_ingredients", schema = "coffee_machine", joinColumns = @JoinColumn(name = "recipe_id"))
     @MapKeyColumn(name = "ingredient_id")
     @Column(name = "quantity")
     private Map<Long, Integer> ingredients = new HashMap<>();
-
 }

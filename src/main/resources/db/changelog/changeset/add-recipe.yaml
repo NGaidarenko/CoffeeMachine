@@ -1,0 +1,140 @@
+databaseChangeLog:
+  - changeSet:
+      id: 3
+      author: nikita
+      changes:
+        - insert:
+            schemaName: coffee_machine
+            tableName: recipe_ingredients
+            columns:
+              - column:
+                  name: recipe_id
+                  valueNumeric: 1  # Ссылается на рецепт "Эспрессо"
+              - column:
+                  name: ingredient_id
+                  valueNumeric: 2  # Ссылается на ингредиент "Кофе"
+              - column:
+                  name: quantity
+                  valueNumeric: 15
+#              - column:
+#                  name: primaryKey
+#                  valueNumeric: 1
+
+        - insert:
+            schemaName: coffee_machine
+            tableName: recipe_ingredients
+            columns:
+              - column:
+                  name: recipe_id
+                  valueNumeric: 1
+              - column:
+                  name: ingredient_id
+                  valueNumeric: 4  # Ссылается на ингредиент "Вода"
+              - column:
+                  name: quantity
+                  valueNumeric: 50
+#              - column:
+#                  name: primaryKey
+#                  valueNumeric: 2  # Уникальное значение для primaryKey
+
+        - insert:
+            schemaName: coffee_machine
+            tableName: recipe_ingredients
+            columns:
+              - column:
+                  name: recipe_id
+                  valueNumeric: 2  # Ссылается на рецепт "Американо"
+              - column:
+                  name: ingredient_id
+                  valueNumeric: 2
+              - column:
+                  name: quantity
+                  valueNumeric: 30
+#              - column:
+#                  name: primaryKey
+#                  valueNumeric: 3
+
+        - insert:
+            schemaName: coffee_machine
+            tableName: recipe_ingredients
+            columns:
+              - column:
+                  name: recipe_id
+                  valueNumeric: 2
+              - column:
+                  name: ingredient_id
+                  valueNumeric: 4
+              - column:
+                  name: quantity
+                  valueNumeric: 100
+#              - column:
+#                  name: primaryKey
+#                  valueNumeric: 4
+
+        - insert:
+            schemaName: coffee_machine
+            tableName: recipe_ingredients
+            columns:
+              - column:
+                  name: recipe_id
+                  valueNumeric: 3  # Ссылается на рецепт "Капучино"
+              - column:
+                  name: ingredient_id
+                  valueNumeric: 2
+              - column:
+                  name: quantity
+                  valueNumeric: 30
+#              - column:
+#                  name: primaryKey
+#                  valueNumeric: 5
+
+        - insert:
+            schemaName: coffee_machine
+            tableName: recipe_ingredients
+            columns:
+              - column:
+                  name: recipe_id
+                  valueNumeric: 3
+              - column:
+                  name: ingredient_id
+                  valueNumeric: 3  # Ссылается на ингредиент "Сахар"
+              - column:
+                  name: quantity
+                  valueNumeric: 20
+#              - column:
+#                  name: primaryKey
+#                  valueNumeric: 6
+
+        - insert:
+            schemaName: coffee_machine
+            tableName: recipe_ingredients
+            columns:
+              - column:
+                  name: recipe_id
+                  valueNumeric: 3
+              - column:
+                  name: ingredient_id
+                  valueNumeric: 4
+              - column:
+                  name: quantity
+                  valueNumeric: 100
+#              - column:
+#                  name: primaryKey
+#                  valueNumeric: 7
+
+        - insert:
+            schemaName: coffee_machine
+            tableName: recipe_ingredients
+            columns:
+              - column:
+                  name: recipe_id
+                  valueNumeric: 3
+              - column:
+                  name: ingredient_id
+                  valueNumeric: 1  # Ссылается на ингредиент "Молоко"
+              - column:
+                  name: quantity
+                  valueNumeric: 50
+#              - column:
+#                  name: primaryKey
+#                  valueNumeric: 8

@@ -1,0 +1,103 @@
+databaseChangeLog:
+  - changeSet:
+      id: 2
+      author: nikita
+      changes:
+        # Вставка данных в таблицу recipe
+        - insert:
+            schemaName: coffee_machine
+            tableName: recipe
+            columns:
+              - column:
+                  name: name
+                  value: "Эспрессо"
+        - insert:
+            schemaName: coffee_machine
+            tableName: recipe
+            columns:
+              - column:
+                  name: name
+                  value: "Американо"
+        - insert:
+            schemaName: coffee_machine
+            tableName: recipe
+            columns:
+              - column:
+                  name: name
+                  value: "Капучино"
+
+        # Вставка данных в таблицу ingredient
+        - insert:
+            schemaName: coffee_machine
+            tableName: ingredient
+            columns:
+              - column:
+                  name: name
+                  value: "Молоко"
+              - column:
+                  name: quantity
+                  valueNumeric: 0
+        - insert:
+            schemaName: coffee_machine
+            tableName: ingredient
+            columns:
+              - column:
+                  name: name
+                  value: "Кофе"
+              - column:
+                  name: quantity
+                  valueNumeric: 0
+        - insert:
+            schemaName: coffee_machine
+            tableName: ingredient
+            columns:
+              - column:
+                  name: name
+                  value: "Сахар"
+              - column:
+                  name: quantity
+                  valueNumeric: 0
+        - insert:
+            schemaName: coffee_machine
+            tableName: ingredient
+            columns:
+              - column:
+                  name: name
+                  value: "Вода"
+              - column:
+                  name: quantity
+                  valueNumeric: 0
+
+        # Вставка данных в таблицу statistics
+        - insert:
+            schemaName: coffee_machine
+            tableName: statistics
+            columns:
+              - column:
+                  name: order_count
+                  valueNumeric: 0
+              - column:
+                  name: recipe_id
+                  valueNumeric: 1
+
+        - insert:
+            schemaName: coffee_machine
+            tableName: statistics
+            columns:
+              - column:
+                  name: order_count
+                  valueNumeric: 0
+              - column:
+                  name: recipe_id
+                  valueNumeric: 2
+
+        - insert:
+            schemaName: coffee_machine
+            tableName: statistics
+            columns:
+              - column:
+                  name: order_count
+                  valueNumeric: 0
+              - column:
+                  name: recipe_id
+                  valueNumeric: 3

@@ -1,0 +1,126 @@
+databaseChangeLog:
+  - changeSet:
+      id: 1
+      author: nikita
+      changes:
+        - createTable:
+            tableName: ingredient
+            schemaName: coffee_machine
+            columns:
+              - column:
+                  name: id
+                  type: bigint
+                  autoIncrement: true
+                  constraints:
+                    primaryKey: true
+              - column:
+                  name: name
+                  type: varchar(255)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: quantity
+                  type: integer
+                  constraints:
+                    nullable: false
+        - createTable:
+            tableName: orders
+            schemaName: coffee_machine
+            columns:
+              - column:
+                  name: id
+                  type: bigint
+                  autoIncrement: true
+                  constraints:
+                    primaryKey: true
+              - column:
+                  name: date
+                  type: timestamp(6)
+              - column:
+                  name: recipe_id
+                  type: bigint
+        - createTable:
+            tableName: recipe
+            schemaName: coffee_machine
+            columns:
+              - column:
+                  name: id
+                  type: bigint
+                  autoIncrement: true
+                  constraints:
+                    primaryKey: true
+              - column:
+                  name: name
+                  type: varchar(255)
+        - createTable:
+            tableName: recipe_ingredients
+            schemaName: coffee_machine
+            columns:
+              - column:
+                  name: recipe_id
+                  type: bigint
+                  constraints:
+                    nullable: false
+              - column:
+                  name: quantity
+                  type: integer
+              - column:
+                  name: ingredient_id
+                  type: bigint
+                  constraints:
+                    nullable: false
+              - column:
+                  name: primaryKey
+                  type: bigint
+                  autoIncrement: true
+                  constraints:
+                    primaryKey: true
+        - createTable:
+            tableName: statistics
+            schemaName: coffee_machine
+            columns:
+              - column:
+                  name: id
+                  type: bigint
+                  autoIncrement: true
+                  constraints:
+                    primaryKey: true
+              - column:
+                  name: order_count
+                  type: integer
+                  constraints:
+                    nullable: false
+              - column:
+                  name: recipe_id
+                  type: bigint
+                  constraints:
+                    nullable: false
+        - addUniqueConstraint:
+            schemaName: coffee_machine
+            tableName: statistics
+            columnNames: recipe_id
+            constraintName: UKt6f74bnvwjk28boyi724srfex
+        - addForeignKeyConstraint:
+            baseTableName: orders
+            baseColumnNames: recipe_id
+            referencedTableName: recipe
+            referencedColumnNames: id
+            constraintName: FKd9qupxrei167bh1s55wlf1x7w
+            baseTableSchemaName: coffee_machine
+            referencedTableSchemaName: coffee_machine
+        - addForeignKeyConstraint:
+            baseTableName: recipe_ingredients
+            baseColumnNames: recipe_id
+            referencedTableName: recipe
+            referencedColumnNames: id
+            constraintName: FKhnsmvxdlwxqq6x2wbgnoef5gr
+            baseTableSchemaName: coffee_machine
+            referencedTableSchemaName: coffee_machine
+        - addForeignKeyConstraint:
+            baseTableName: statistics
+            baseColumnNames: recipe_id
+            referencedTableName: recipe
+            referencedColumnNames: id
+            constraintName: FKnul05qcwqo85jvprm01p80vyk
+            baseTableSchemaName: coffee_machine
+            referencedTableSchemaName: coffee_machine

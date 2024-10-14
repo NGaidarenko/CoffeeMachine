@@ -7,6 +7,8 @@ import com.example.coffeemachine.repository.RecipeStatisticsRepository;
 import jakarta.persistence.EntityExistsException;
 import jakarta.persistence.EntityNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cache.annotation.CacheEvict;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -15,6 +17,7 @@ import java.util.List;
 public class RecipeService {
 
     @Autowired
+
     private RecipeRepository recipeRepository;
 
     @Autowired
@@ -24,11 +27,13 @@ public class RecipeService {
         return recipeRepository.findAll();
     }
 
+    @Cacheable(value = "recipe", key = "#id")
     public RecipeEntity getEntityById(Long id) {
         return recipeRepository.findById(id)
                 .orElseThrow(() -> new EntityNotFoundException("Recipe with id: " + id + " not found"));
     }
 
+    @CacheEvict(value = "recipe", key = "#recipeEntity.id")
     public RecipeEntity createRecipe(RecipeEntity recipeEntity) {
         if (recipeRepository.existsByName(recipeEntity.getName())) {
             throw new EntityExistsException("Recipe with name: " + recipeEntity.getName() + " already exists");
@@ -47,6 +52,7 @@ public class RecipeService {
         return newRecipeEntity;
     }
 
+    @CacheEvict(value = "recipe", key = "#id", allEntries = true)
     public RecipeEntity updateRecipe(Long id, RecipeEntity recipeEntity) {
         RecipeEntity recipe = getEntityById(id);
 
