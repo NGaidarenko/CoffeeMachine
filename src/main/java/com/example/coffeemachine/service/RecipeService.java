@@ -8,6 +8,7 @@ import jakarta.persistence.EntityExistsException;
 import jakarta.persistence.EntityNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cache.annotation.CacheEvict;
+import org.springframework.cache.annotation.CachePut;
 import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
 
@@ -52,7 +53,7 @@ public class RecipeService {
         return newRecipeEntity;
     }
 
-    @CacheEvict(value = "recipe", key = "#id", allEntries = true)
+    @CachePut(value = "recipe", key = "#id")
     public RecipeEntity updateRecipe(Long id, RecipeEntity recipeEntity) {
         RecipeEntity recipe = getEntityById(id);
 
