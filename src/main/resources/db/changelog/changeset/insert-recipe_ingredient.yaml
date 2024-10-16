@@ -1,0 +1,22 @@
+databaseChangeLog:
+  - changeSet:
+      id: 3
+      author: nikita
+      changes:
+        - loadData:
+            schemaName: coffee_machine
+            tableName: recipe_ingredients
+            file: db/changelog/data/recipe_ingredients.csv
+            columns:
+              - column:
+                  index: 1
+                  name: recipe_id
+              - column:
+                  index: 2
+                  name: quantity
+              - column:
+                  index: 3
+                  name: ingredient_id
+              - column:
+                  index: 4
+                  name: primaryKey
