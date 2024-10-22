@@ -2,10 +2,12 @@ databaseChangeLog:
   - changeSet:
       id: 3
       author: nikita
+      runOnChange: true
       changes:
-        - loadData:
+        - loadUpdateData:
             schemaName: coffee_machine
             tableName: recipe_ingredients
+            primaryKey: primaryKey
             file: db/changelog/data/recipe_ingredients.csv
             columns:
               - column:

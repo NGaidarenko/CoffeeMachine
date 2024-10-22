@@ -2,10 +2,12 @@ databaseChangeLog:
   - changeSet:
       id: 2
       author: nikita
+      runOnChange: true
       changes:
-        - loadData:
+        - loadUpdateData:
             schemaName: coffee_machine
             tableName: recipe
+            primaryKey: id
             file: db/changelog/data/recipe.csv
             columns:
               - column:
@@ -14,9 +16,10 @@ databaseChangeLog:
               - column:
                   index: 1
                   name: id
-        - loadData:
+        - loadUpdateData:
             schemaName: coffee_machine
             tableName: ingredient
+            primaryKey: id
             file: db/changelog/data/ingredients.csv
             columns:
               - column:
@@ -28,9 +31,10 @@ databaseChangeLog:
               - column:
                   index: 3
                   name: quantity
-        - loadData:
+        - loadUpdateData:
             schemaName: coffee_machine
             tableName: statistics
+            primaryKey: id
             file: db/changelog/data/statistics.csv
             columns:
               - column:
